@@ -37,6 +37,7 @@ public class ProductDetail extends AppCompatActivity {
         description = (TextView) findViewById(R.id.descriptionDetail);
         imageView = (ImageView) findViewById(R.id.imageProductDetail);
         priceView = (TextView) findViewById(R.id.priceDetail);
+        /// git
 
         id = getIntent().getStringExtra("id");
         image_url = getIntent().getStringExtra("image");
