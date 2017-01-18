@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hammersmith.ku.coffeecorner">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".webView" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SingupActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ProductDetail"
+            android:label="Detail"
+            android:parentActivityName=".CategoryView">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoryView" />
+        </activity>
+        <activity
+            android:name=".ImageActivity"
+            android:label="Image Detail"
+            android:parentActivityName=".ProductDetail">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductDetail" />
+        </activity>
+        <activity
+            android:name=".MyProfile"
+            android:label="My Profile"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".CategoryView"
+            android:label="Main Course"
+            android:value=".ProductDetail">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".CartActivity"
+            android:label="Order"
+            android:parentActivityName=".ProductDetail"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductDetail" />
+
+        </activity>
+    </application>
+
+</manifest>

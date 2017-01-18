@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:paddingTop="0dp"
+    android:layout_height="120dp ">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+
+            android:id="@+id/card_view"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/card_margin"
+            android:elevation="5dp"
+            card_view:cardCornerRadius="@dimen/card_album_radius">
+
+            <LinearLayout
+
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <com.hammersmith.ku.coffeecorner.RoundedImageView
+                    android:id="@+id/round_Image2"
+                    android:layout_width="120dp"
+                    android:layout_height="117dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/foottwojpg"
+                    app:border_width="0dip"
+                    app:is_oval="true"
+                    app:round_background="true" />
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="15dp"
+                        android:textColor="@color/light"
+                        android:id="@+id/titleCategoryView"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="normal|bold" />
+
+                    <LinearLayout
+                    android:paddingTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/priceViewModel">
+                        <TextView
+                            android:textAlignment="textEnd"
+                            android:id="@+id/priceCategoryView"
+                            android:paddingLeft="30dp"
+                            android:textColor="@color/light"
+                            android:layout_width="match_parent"
+
+                            android:textSize="20dp"
+                            android:layout_height="match_parent"
+                            android:textStyle="normal|bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</LinearLayout>

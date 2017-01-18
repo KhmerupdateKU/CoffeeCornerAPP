@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_category_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hammersmith.ku.coffeecorner.CategoryView">
+    <ScrollView
+
+        android:background="@color/light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="153dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="0dp">
+            <com.hammersmith.ku.coffeecorner.RoundedImageView
+                android:id="@+id/imageCategory"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                android:src="@drawable/foottwojpg"
+                app:border_width="0dip"
+                app:is_oval="true"
+                app:round_background="true" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:paddingTop="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerViewCategoryShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

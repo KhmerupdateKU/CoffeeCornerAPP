@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="100dp
+
+    ">
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/card_view"
+        android:id="@+id/card_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="5dp"
+        >
+
+    <LinearLayout
+
+        android:background="@color/light"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:weightSum="3">
+
+        <com.hammersmith.ku.coffeecorner.RoundedImageView
+            android:id="@+id/round_ImageCart"
+
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            android:src="@drawable/foottwojpg"
+            app:border_width="0dip"
+            app:is_oval="true"
+            app:round_background="true" />
+
+        <LinearLayout
+            android:paddingTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:id="@+id/title_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Curry Chicken"
+                android:layout_weight="0.18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:text="Quantity: "
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/qty_order"
+                android:paddingRight="20dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:text="1 "
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Price: "
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/priceCart"
+                    android:layout_width="wrap_content"
+                    android:text=""
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+</LinearLayout>
