@@ -29,8 +29,7 @@ public class CartActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this, VERTICAL, false);
         recyclerViewCart.setLayoutManager(linearLayoutManager);
 
-        order.add(new Order(R.drawable.foodfive, "Korean Pork", "1", "$3.50"));
-        order.add(new Order(R.drawable.foodfive, "Coca Cola", "1", "$3.00"));
+        order.add(new Order(R.drawable.foodfive, "Korean Pork", "1", "$3.00"));
 
         adapterOrderCart = new  AdapterOrder(this, order);
         recyclerViewCart.setAdapter(adapterOrderCart);

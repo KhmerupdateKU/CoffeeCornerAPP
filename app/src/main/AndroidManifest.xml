@@ -18,11 +18,7 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SingupActivity"
@@ -59,14 +55,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CartActivity"
+        <activity
+            android:name=".CartActivity"
             android:label="Order"
-            android:parentActivityName=".ProductDetail"
-            >
+            android:parentActivityName=".ProductDetail">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ProductDetail" />
-
+        </activity>
+        <activity android:name=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
