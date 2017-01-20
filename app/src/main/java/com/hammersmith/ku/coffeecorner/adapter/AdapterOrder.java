@@ -3,6 +3,7 @@ package com.hammersmith.ku.coffeecorner.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.hammersmith.ku.coffeecorner.CategoryView;
 import com.hammersmith.ku.coffeecorner.R;
 import com.hammersmith.ku.coffeecorner.model.Order;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,10 +46,15 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.imageView.setImageResource(order.get(position).getImageView());
         holder.title.setText(order.get(position).getTitle());
-        holder.price.setText(order.get(position).getPrice());
-        holder.quantity.setText(order.get(position).getQuantity());
+        Float totalPrice = order.get(position).getPrice() * order.get(position).getQuantity();
+        holder.price.setText("$ " + String.valueOf(totalPrice));
+        holder.quantity.setText(" " + order.get(position).getQuantity());
+
+        Context context = holder.imageView.getContext();
+        Uri uri = Uri.parse(order.get(position).getImageView());
+        Picasso.with(context).load(uri).into(holder.imageView);
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

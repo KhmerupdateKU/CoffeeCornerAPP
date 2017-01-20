@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.hammersmith.ku.coffeecorner.adapter.AdapterCategoryView;
@@ -71,6 +72,7 @@ public class CategoryView extends AppCompatActivity {
                 adapterCategoryView = new AdapterCategoryView(CategoryView.this, categoryViewModels);
                 recyclerView.setAdapter(adapterCategoryView);
                 adapterCategoryView.notifyDataSetChanged();
+                findViewById(R.id.loadingPanel).setVisibility(View.GONE);
             }
 
             @Override

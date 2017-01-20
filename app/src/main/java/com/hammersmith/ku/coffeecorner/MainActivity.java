@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.hammersmith.ku.coffeecorner.adapter.AdapterCategory;
 import com.hammersmith.ku.coffeecorner.api.ApiClient;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         //Category
         recyclerView9 = (RecyclerView) findViewById(R.id.recyclerViewCategory);
 
@@ -66,10 +68,12 @@ public class MainActivity extends AppCompatActivity
                 adapterCategory = new AdapterCategory(MainActivity.this, categories);
                 recyclerView9.setAdapter(adapterCategory);
                 adapterCategory.notifyDataSetChanged();
+                findViewById(R.id.loadingPanel).setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
+
 
             }
         });
@@ -152,4 +156,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

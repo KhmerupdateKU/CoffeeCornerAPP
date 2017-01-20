@@ -9,7 +9,17 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.hammersmith.ku.coffeecorner.MainActivity"
     tools:showIn="@layout/app_bar_main">
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"

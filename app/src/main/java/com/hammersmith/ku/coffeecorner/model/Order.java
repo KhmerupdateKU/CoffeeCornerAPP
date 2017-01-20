@@ -7,18 +7,20 @@ package com.hammersmith.ku.coffeecorner.model;
 public class Order {
 
     private int id;
-    private int imageView;
+    private String imageView;
     private String title;
-    private String quantity;
-    private  String price;
+    private Integer quantity;
+    private  Float price;
 
 
-    public Order(int imageView, String title, String quantity, String price){
-        this.imageView = imageView;
-        this.title = title;
-        this.quantity = quantity;
-        this.price = price;
+    public Order(int id, String imageView, Integer quantity, String title, Float price) {
+        this.setId(id);
+        this.setImageView(imageView);
+        this.setQuantity(quantity);
+        this.setTitle(title);
+        this.setPrice(price);
     }
+
 
     public int getId() {
         return id;
@@ -28,19 +30,35 @@ public class Order {
         this.id = id;
     }
 
+    public String getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(String imageView) {
+        this.imageView = imageView;
+    }
+
     public String getTitle() {
         return title;
     }
 
-    public String getQuantity() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public int getImageView() {
-        return imageView;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
-    public String getPrice (){
+
+    public Float getPrice() {
         return price;
     }
 
+    public void setPrice(Float price) {
+        this.price = price;
+    }
 }

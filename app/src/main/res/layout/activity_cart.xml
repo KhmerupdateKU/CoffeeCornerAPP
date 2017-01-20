@@ -37,7 +37,7 @@
 
                         android:id="@+id/recyclerViewCart"
                         android:layout_width="match_parent"
-                        android:layout_height="101dp"
+                        android:layout_height="263dp"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                     </android.support.v7.widget.RecyclerView>
@@ -70,8 +70,8 @@
                     android:text="SUB-TOTAL:"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/sub_total"
                     android:layout_width="141dp"
-                    android:text="$3.00"
                     android:textAlignment="viewEnd"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -120,9 +120,9 @@
                     android:text="TOTAL:"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/grand_total"
                     android:textColor="@color/colorPrimary"
                     android:layout_width="140dp"
-                    android:text="$4.00"
                     android:textAlignment="viewEnd"
                     android:layout_height="wrap_content" />
             </LinearLayout>
