@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "233768432179",
+    "project_id": "coffeecorner-2fafc"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233768432179:android:aac7e97e0c5a9d61",
+        "android_client_info": {
+          "package_name": "com.hammersmith.ku.coffeecorner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233768432179-r3a5h8dc096lf3jl68pm1uivvnbdn593.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hammersmith.ku.coffeecorner",
+            "certificate_hash": "220345C7F04AE958918E17F16D1FA400CF2A826F"
+          }
+        },
+        {
+          "client_id": "233768432179-rspvkm5om95qg90dudjnkra5cu178u7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxjNOx6aYRlTl4ymWHm-pLitTlZdpM8O0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
