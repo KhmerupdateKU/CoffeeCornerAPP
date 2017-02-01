@@ -40,15 +40,7 @@ public class Utils {
         return str;
     }
 
-    /**
-     * 保存在本地（SDCARD）
-     *
-     * @param ctx
-     * @param requesturl
-     * @param folderName 所在文件夹名
-     * @param filename   为空时自动命名
-     * @return 成功返回filename，失败返回null
-     */
+
     public static String doHttpDownload2(Context ctx, String requesturl,
                                          String folderName, String filename) {
         log("doHttpDownload2(" + ctx + "," + requesturl + "," + filename + ")");

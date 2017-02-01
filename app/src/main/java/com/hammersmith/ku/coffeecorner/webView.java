@@ -2,9 +2,11 @@ package com.hammersmith.ku.coffeecorner;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
+import static android.view.Window.FEATURE_PROGRESS;
+import static android.view.Window.PROGRESS_VISIBILITY_ON;
 
 public class webView extends AppCompatActivity {
     private WebView webView;
@@ -15,7 +17,7 @@ public class webView extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
 
         // Makes Progress bar Visible
-        getWindow().setFeatureInt( Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
+        getWindow().setFeatureInt( FEATURE_PROGRESS, PROGRESS_VISIBILITY_ON);
 
         webView  = (WebView) findViewById(R.id.webview);
         webView.setWebChromeClient(new WebChromeClient() {

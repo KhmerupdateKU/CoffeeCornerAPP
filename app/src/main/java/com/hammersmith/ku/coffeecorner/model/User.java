@@ -5,60 +5,16 @@ package com.hammersmith.ku.coffeecorner.model;
  */
 
 public class User {
-    private int id;
-    private String name;
-    private String email;
-    private String socialLink;
-    private String socialType;
-    private String photo;
-    private String msg;
-    private String password;
-    private String address;
-    private String phone;
-    private String phone2;
 
-    public User() {
-    }
 
-    public User(String socialLink) {
-        this.socialLink = socialLink;
-    }
+    public String name;
 
-    public User(String name, String email, String photo, String socialLink, String socialType) {
-        this.name = name;
-        this.email = email;
-        this.photo = photo;
-        this.socialLink = socialLink;
-        this.socialType = socialType;
-    }
+    public String email;
 
-    public User(String name, String email, String password, String photo) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.photo = photo;
-    }
+    public String facebookID;
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+    public String gender;
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -76,59 +32,19 @@ public class User {
         this.email = email;
     }
 
-    public String getSocialLink() {
-        return socialLink;
+    public String getFacebookID() {
+        return facebookID;
     }
 
-    public void setSocialLink(String socialLink) {
-        this.socialLink = socialLink;
+    public void setFacebookID(String facebookID) {
+        this.facebookID = facebookID;
     }
 
-    public String getSocialType() {
-        return socialType;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSocialType(String socialType) {
-        this.socialType = socialType;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPhone2() {
-        return phone2;
-    }
-
-    public void setPhone2(String phone2) {
-        this.phone2 = phone2;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

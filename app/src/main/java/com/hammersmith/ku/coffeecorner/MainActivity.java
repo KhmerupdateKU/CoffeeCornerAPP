@@ -1,7 +1,9 @@
 package com.hammersmith.ku.coffeecorner;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.hammersmith.ku.coffeecorner.adapter.AdapterCategory;
 import com.hammersmith.ku.coffeecorner.api.ApiClient;
 import com.hammersmith.ku.coffeecorner.api.ApiService;
@@ -28,22 +39,30 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
+import static com.hammersmith.ku.coffeecorner.SignInActivity.MY_PREF_NAME;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
     // Category
 
     private RecyclerView recyclerView9;
     private AdapterCategory adapterCategory;
-    private  LinearLayoutManager linearLayoutManager9;
+    private LinearLayoutManager linearLayoutManager9;
     private List<Category> categories = new ArrayList<>();
 
 
+    //google api client
+    private int ID;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        //fb
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,9 +71,8 @@ public class MainActivity extends AppCompatActivity
         recyclerView9 = (RecyclerView) findViewById(R.id.recyclerViewCategory);
 
 
-
         // Category
-        linearLayoutManager9 = new LinearLayoutManager(this, VERTICAL, false );
+        linearLayoutManager9 = new LinearLayoutManager(this, VERTICAL, false);
         recyclerView9.setLayoutManager((linearLayoutManager9));
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
@@ -64,7 +82,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 categories = response.body();
-                Log.d("Get Main Title",categories.get(0).getId());
+                Log.d("Get Main Title", categories.get(0).getId());
                 adapterCategory = new AdapterCategory(MainActivity.this, categories);
                 recyclerView9.setAdapter(adapterCategory);
                 adapterCategory.notifyDataSetChanged();
@@ -87,6 +105,38 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ID = getIntent().getIntExtra("ID",0);
+        buildGoogleApiClient(null);
+    }
+
+    private void buildGoogleApiClient(String name) {
+        GoogleSignInOptions.Builder geoBuilder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().requestProfile();
+
+        if (name != null) {
+            geoBuilder.setAccountName(name);
+        }
+
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.stopAutoManage(MainActivity.this);
+        }
+
+        GoogleApiClient.Builder builder = new GoogleApiClient.Builder(getApplicationContext())
+                .enableAutoManage(MainActivity.this,0,this)
+                .addApi(Auth.CREDENTIALS_API)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, geoBuilder.build());
+
+        mGoogleApiClient = builder.build();
+
+    }
+
+    private void signOut(){
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                Log.d("Google Sign Out",status.getStatus().toString());
+            }
+        });
     }
 
     @Override
@@ -105,7 +155,17 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+    //@Override
+//    protected void onStart() {
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//        mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+//                .build();
+//        mGoogleApiClient.connect();
+//        super.onStart();
+    //}
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -134,27 +194,54 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.favorite_food) {
 
 
-
-
         } else if (id == R.id.nav_slideshow) {
 
 
-        } else if (id == R.id.partnership){
-            Intent intent = new Intent(this,webView.class);
+        } else if (id == R.id.partnership) {
+            Intent intent = new Intent(this, webView.class);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-          Intent intent = new Intent(MainActivity.this, MyProfile.class);
+            Intent intent = new Intent(MainActivity.this, MyProfile.class);
             startActivity(intent);
-
 
 
         } else if (id == R.id.nav_send) {
+            if (ID == 1){
+                signOut();
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME,MODE_PRIVATE).edit();
+                editor.putBoolean("Google",false);
+                editor.commit();
+                Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+
+            if (ID == 2) {
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME,MODE_PRIVATE).edit();
+                editor.putBoolean("Google",false);
+                editor.commit();
+                FacebookSdk.sdkInitialize(getApplicationContext());
+                if (AccessToken.getCurrentAccessToken() != null) {
+                    LoginManager.getInstance().logOut();
+                    Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            }
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 
 }

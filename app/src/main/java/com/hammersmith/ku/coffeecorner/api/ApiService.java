@@ -24,4 +24,7 @@ public interface ApiService {
 
     @POST("user/register")
     Call<User> postUser();
+
+    @POST("post/order/{userId}")
+    Call<List<CategoryViewModel>> postCategories(@Path("userId") String id);
 }

@@ -26,7 +26,7 @@
                 android:gravity="center"
                 android:padding="20dp">
                 <com.hammersmith.ku.coffeecorner.RoundedImageView
-                    android:id="@+id/round_Image"
+                    android:id="@+id/round_ImageProfile"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
