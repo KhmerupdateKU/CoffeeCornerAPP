@@ -15,15 +15,15 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
         android:elevation="5dp"
-        card_view:cardCornerRadius="@dimen/card_album_radius">
+        card_view:cardCornerRadius="@dimen/card_album_radius"
+        >
 
         <LinearLayout
 
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:orientation="horizontal">
 
             <com.hammersmith.ku.coffeecorner.RoundedImageView
                 android:id="@+id/round_Image"

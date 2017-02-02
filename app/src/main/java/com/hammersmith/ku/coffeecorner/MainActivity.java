@@ -235,7 +235,13 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
 
-        } else if (id == R.id.nav_send) {
+
+        }else if (id==R.id.location){
+            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_send) {
             if (ID == 1) {
                 signOut();
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME, MODE_PRIVATE).edit();

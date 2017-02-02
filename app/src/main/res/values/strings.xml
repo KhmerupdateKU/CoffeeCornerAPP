@@ -75,6 +75,7 @@
     <!-- Messages for the Rest API activity -->
     <string name="connections_fmt">Connections: %1$s</string>
     <string name="msg_contacts_failed">Get contacts failed.</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
