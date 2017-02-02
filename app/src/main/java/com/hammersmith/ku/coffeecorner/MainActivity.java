@@ -1,5 +1,6 @@
 package com.hammersmith.ku.coffeecorner;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -114,11 +116,7 @@ public class MainActivity extends AppCompatActivity
         name_profile = (TextView) findViewById(R.id.name_account);
 
 
-
-
-
-
-        ID = getIntent().getIntExtra("ID",0);
+        ID = getIntent().getIntExtra("ID", 0);
         buildGoogleApiClient(null);
 //        Name = getIntent().getStringExtra("Name");
 //        textView_profile.setText(Name);
@@ -137,7 +135,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         GoogleApiClient.Builder builder = new GoogleApiClient.Builder(getApplicationContext())
-                .enableAutoManage(MainActivity.this,0,this)
+                .enableAutoManage(MainActivity.this, 0, this)
                 .addApi(Auth.CREDENTIALS_API)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, geoBuilder.build());
 
@@ -145,11 +143,11 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void signOut(){
+    private void signOut() {
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override
             public void onResult(@NonNull Status status) {
-                Log.d("Google Sign Out",status.getStatus().toString());
+                Log.d("Google Sign Out", status.getStatus().toString());
             }
         });
     }
@@ -160,9 +158,26 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
+                    .setMessage("Are you sure?")
+                    .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }).setNegativeButton("no", null).show();
         }
+
+
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -181,20 +196,20 @@ public class MainActivity extends AppCompatActivity
 //        mGoogleApiClient.connect();
 //        super.onStart();
     //}
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -221,10 +236,10 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_send) {
-            if (ID == 1){
+            if (ID == 1) {
                 signOut();
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME,MODE_PRIVATE).edit();
-                editor.putBoolean("Google",false);
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME, MODE_PRIVATE).edit();
+                editor.putBoolean("Google", false);
                 editor.commit();
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -233,8 +248,8 @@ public class MainActivity extends AppCompatActivity
             }
 
             if (ID == 2) {
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME,MODE_PRIVATE).edit();
-                editor.putBoolean("Google",false);
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME, MODE_PRIVATE).edit();
+                editor.putBoolean("Google", false);
                 editor.commit();
                 FacebookSdk.sdkInitialize(getApplicationContext());
                 if (AccessToken.getCurrentAccessToken() != null) {
@@ -259,4 +274,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+
+
 }
+
