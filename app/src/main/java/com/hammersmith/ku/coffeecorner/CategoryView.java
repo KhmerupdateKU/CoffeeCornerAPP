@@ -52,7 +52,7 @@ public class CategoryView extends AppCompatActivity {
 
         getSupportActionBar().setTitle(toolBarTitle);
 
-        Uri uri = Uri.parse(image_url);
+       Uri uri = Uri.parse(image_url);
 
         Context context = imageView.getContext();
         Picasso.with(context).load(uri).into(imageView);

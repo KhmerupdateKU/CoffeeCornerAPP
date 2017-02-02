@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
     // Category
+    private ImageView imageView_profile;
+    private TextView textView_profile, name_profile;
 
     private RecyclerView recyclerView9;
     private AdapterCategory adapterCategory;
@@ -54,12 +58,12 @@ public class MainActivity extends AppCompatActivity
 
     //google api client
     private int ID;
+    private String Name;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         //fb
@@ -105,9 +109,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        imageView_profile = (ImageView) findViewById(R.id.imageView_Profile);
+        textView_profile = (TextView) findViewById(R.id.textView_Profile);
+        name_profile = (TextView) findViewById(R.id.name_account);
+
+
+
+
+
 
         ID = getIntent().getIntExtra("ID",0);
         buildGoogleApiClient(null);
+//        Name = getIntent().getStringExtra("Name");
+//        textView_profile.setText(Name);
+
     }
 
     private void buildGoogleApiClient(String name) {

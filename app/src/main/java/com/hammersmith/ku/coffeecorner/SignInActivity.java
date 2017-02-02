@@ -134,13 +134,16 @@ public class SignInActivity extends AppCompatActivity  implements View.OnClickLi
                 name = account.getDisplayName();
                 emailGoogle = account.getEmail();
                 personId = account.getId();
-                personPhoto = account.getPhotoUrl();
+              Uri  personPhoto = account.getPhotoUrl();
+               
             }
             Intent intent = new Intent(this,MainActivity.class);
-            intent.putExtra("ID",1);
+            intent.putExtra("Name", name);
             startActivity(intent);
             finish();
             Toast.makeText(this,emailGoogle + " , " + name,Toast.LENGTH_LONG).show();
+           // intent.putExtra("ID",1);
+
         }
         else {
             Log.d("LoginActivity", "Error Log out Google");
