@@ -9,5 +9,36 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hammersmith.ku.coffeecorner.AboutUsActivity">
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:paddingTop="20dp"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/welcomecoffe"
+            android:id="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:paddingTop="100dp"
+            android:text="          Coffee Corner is a family business where the owner from Johor Malaysia and trying to share with people in Cambodia of how great taste of Malaysian food."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>

@@ -22,7 +22,7 @@
         <item name="contentPaddingTop">24dp</item>
         <item name="contentPaddingLeft">16dp</item>
         <item name="contentPaddingRight">16dp</item>
-        <item name="cardBackgroundColor">@color/colorPrimaryDark</item>
+        <item name="cardBackgroundColor">@color/white</item>
     </style>
 
 

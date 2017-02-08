@@ -68,6 +68,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="303dp"
+            android:textColor="@color/colorPrimary"
             android:id="@+id/descriptionDetail"
             android:textAlignment="center"
             android:text=""

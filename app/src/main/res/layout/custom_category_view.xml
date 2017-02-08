@@ -26,7 +26,7 @@
 
             <LinearLayout
 
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:textSize="15dp"
-                        android:textColor="@color/light"
+                        android:textColor="@color/colorPrimary"
                         android:id="@+id/titleCategoryView"
                         android:textAlignment="center"
                         android:layout_width="match_parent"
@@ -59,15 +59,15 @@
                         android:textStyle="normal|bold" />
 
                     <LinearLayout
-                    android:paddingTop="30dp"
+                    android:paddingTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/priceViewModel">
                         <TextView
-                            android:textAlignment="textEnd"
+                            android:textAlignment="center"
                             android:id="@+id/priceCategoryView"
-                            android:paddingLeft="30dp"
-                            android:textColor="@color/light"
+                            android:paddingLeft="20dp"
+                            android:textColor="@color/colorPrimary"
                             android:layout_width="match_parent"
 
                             android:textSize="20dp"

@@ -20,7 +20,7 @@
 
         <LinearLayout
 
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/light"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:textSize="20dp"
-                    android:textColor="@color/light"
+                    android:textColor="@color/colorPrimary"
                     android:id="@+id/title"
                     android:textAlignment="center"
                     android:layout_width="match_parent"
@@ -53,9 +53,9 @@
                     />
                 <TextView
                     android:id="@+id/subTittle"
-                    android:paddingRight="20dp"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/light"
+                    android:paddingRight="30dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
