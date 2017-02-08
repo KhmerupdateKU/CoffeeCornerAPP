@@ -7,6 +7,7 @@ import com.hammersmith.ku.coffeecorner.model.User;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -16,15 +17,18 @@ import retrofit2.http.Path;
  */
 
 public interface ApiService {
+
     @GET("main")
     Call<List<Category>> getCategories();
 
     @GET("categories/{id}")
     Call<List<CategoryViewModel>> getCategoriesModel(@Path("id") String id);
 
-    @POST("user/register")
-    Call<User> postUser();
+    @POST("register/user")
+    Call<User> postUser(@Body User user);
+
 
     @POST("post/order/{userId}")
     Call<List<CategoryViewModel>> postCategories(@Path("userId") String id);
+
 }

@@ -240,6 +240,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, MapsActivity.class);
             startActivity(intent);
 
+
+        }else if (id==R.id.about) {
+            Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
+            startActivity(intent);
+
         }
         else if (id == R.id.nav_send) {
             if (ID == 1) {
@@ -279,9 +284,5 @@ public class MainActivity extends AppCompatActivity
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-
-
-
 }
 

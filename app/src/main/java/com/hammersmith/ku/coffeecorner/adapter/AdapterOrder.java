@@ -48,7 +48,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.title.setText(order.get(position).getTitle());
         Float totalPrice = order.get(position).getPrice() * order.get(position).getQuantity();
-        holder.price.setText("$ " + String.valueOf(totalPrice));
+        holder.price.setText(" $ " + String.valueOf(totalPrice));
         holder.quantity.setText(" " + order.get(position).getQuantity());
 
         Context context = holder.imageView.getContext();

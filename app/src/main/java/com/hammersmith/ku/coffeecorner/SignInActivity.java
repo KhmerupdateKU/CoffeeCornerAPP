@@ -27,14 +27,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.hammersmith.ku.coffeecorner.api.ApiClient;
+import com.hammersmith.ku.coffeecorner.api.ApiService;
+import com.hammersmith.ku.coffeecorner.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Arrays;
 
-public class SignInActivity extends AppCompatActivity  implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+public class SignInActivity extends AppCompatActivity  implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
+    private User user;
     LoginButton loginButton;
     CallbackManager callbackManager;
     //Signin button
@@ -134,7 +142,27 @@ public class SignInActivity extends AppCompatActivity  implements View.OnClickLi
                 name = account.getDisplayName();
                 emailGoogle = account.getEmail();
                 personId = account.getId();
-              Uri  personPhoto = account.getPhotoUrl();
+                Uri  personPhoto = account.getPhotoUrl();
+                user = new User(personId,emailGoogle,"111","111",name);
+                ApiService service = ApiClient.getClient().create(ApiService.class);
+                Call<User> userRegister = service.postUser(user);
+                userRegister.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (!response.isSuccessful()) {
+                            try {
+                                Log.e("LOG", "Retrofit Response: " + response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Log.e("LOG","Retrofit Response Error: "+t);
+                    }
+                });
                
             }
             Intent intent = new Intent(this,MainActivity.class);
@@ -190,9 +218,31 @@ public class SignInActivity extends AppCompatActivity  implements View.OnClickLi
                 if (json != null) {
                     try {
                         String fbUserName = json.getString("name");
+                        String fbFirstName = json.getString("first_name");
+                        String fbLastName = json.getString("last_name");
                         String fbEmail = json.getString("email");
                         String fbID = json.getString("id");
                         Toast.makeText(SignInActivity.this,"FACEBOOK :" + fbUserName + "," + fbEmail,Toast.LENGTH_LONG).show();
+                        user = new User(fbID, fbEmail, fbFirstName, fbLastName, name);
+                        ApiService service = ApiClient.getClient().create(ApiService.class);
+                        Call<User> userRegister = service.postUser(user);
+                        userRegister.enqueue(new Callback<User>() {
+                            @Override
+                            public void onResponse(Call<User> call, Response<User> response) {
+                                if (!response.isSuccessful()) {
+                                    try {
+                                        Log.e("LOG", "Retrofit Response: " + response.errorBody().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<User> call, Throwable t) {
+                                Log.e("LOG","Retrofit Response Error: "+t);
+                            }
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
