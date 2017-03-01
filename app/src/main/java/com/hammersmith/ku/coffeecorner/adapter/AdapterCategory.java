@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +26,11 @@ import java.util.List;
 
     public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.MyViewHolder> {
 
+
         private Context context;
         private Activity activity;
         private List<Category> categories;
+    private CardView cardView;
 
 
 

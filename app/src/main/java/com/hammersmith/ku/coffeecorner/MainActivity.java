@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity
 
             if (ID == 2) {
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME, MODE_PRIVATE).edit();
-                editor.putBoolean("Google", false);
+                editor.putBoolean("Facebook", false);
                 editor.commit();
                 FacebookSdk.sdkInitialize(getApplicationContext());
                 if (AccessToken.getCurrentAccessToken() != null) {
@@ -273,7 +273,6 @@ public class MainActivity extends AppCompatActivity
             }
 
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

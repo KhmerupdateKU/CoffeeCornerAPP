@@ -27,6 +27,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.hammersmith.ku.coffeecorner.api.ApiClient;
 import com.hammersmith.ku.coffeecorner.api.ApiService;
 import com.hammersmith.ku.coffeecorner.model.User;
@@ -87,7 +89,7 @@ public class SignInActivity extends AppCompatActivity  implements View.OnClickLi
             public void onSuccess(LoginResult loginResult) {
                 Log.d("FaceBook Login","FB login Success");
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREF_NAME,MODE_PRIVATE).edit();
-                editor.putBoolean("Google",true);
+                editor.putBoolean("Facebook",true);
                 editor.commit();
                 requestData();
                 Intent i = new Intent(SignInActivity.this, MainActivity.class);
@@ -170,7 +172,7 @@ public class SignInActivity extends AppCompatActivity  implements View.OnClickLi
             startActivity(intent);
             finish();
             Toast.makeText(this,emailGoogle + " , " + name,Toast.LENGTH_LONG).show();
-           // intent.putExtra("ID",1);
+           intent.putExtra("ID",1);
 
         }
         else {
@@ -261,8 +263,16 @@ public class SignInActivity extends AppCompatActivity  implements View.OnClickLi
 
             signIn();
 
-
         }
+    }
+
+    private void revokeAccess() {
+        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                    }
+                });
     }
 
     @Override

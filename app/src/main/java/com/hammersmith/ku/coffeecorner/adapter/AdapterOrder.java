@@ -88,8 +88,6 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHolder
             price = (TextView) itemView.findViewById(R.id.priceCart);
             quantity = (TextView) itemView.findViewById(R.id.qty_order);
 
-
-
         }
 
 
